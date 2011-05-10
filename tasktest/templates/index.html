@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Type desired libs</h1>
+<form action="{% url load %}" method="POST">
+    <textarea name="requirements"></textarea>
+    {% csrf_token %}
+    <input type="submit" />
+</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<script type="text/javascript">
+function ping_tasks(){
+	$.get("{% url task_list %}");
+	setTimeout("ping_tasks()",3000);
+}
+$(function(){
+	ping_tasks();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Wait while loading...</h1>
+<h2>Tasks</h2>
+<ul>
+{% for task in tasks %}
+    <li>
+        <p><strong>{{ task.name }}</strong>{{ task.status }}</p>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
